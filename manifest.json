@@ -1,0 +1,15 @@
+{
+  "short_name": "Solid2050",
+  "name": "Smartest Algorithm PWA 2050",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/5968/5968267.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#0a0e14",
+  "display": "standalone",
+  "theme_color": "#00f2ff"
+}
