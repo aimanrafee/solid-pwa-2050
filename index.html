@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solid 2050 PWA</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>SOLID 2050</h1>
+        <div id="status-bar">
+            <span id="network-status"><span class="status-dot"></span> Checking...</span>
+        </div>
+        
+        <div class="auth-card">
+            <p>Sistem Biometrik Pintar</p>
+            <button onclick="logMasukBiometrik()" id="btnLogin">VERIFY BIOMETRIC</button>
+            <button onclick="daftarBiometrik()" id="btnReg">INITIAL SETUP</button>
+        </div>
+
+        <div id="algo-display" style="display:none;">
+            <p class="neon-text">ALGORITMA AKTIF</p>
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+        // Pendaftaran Service Worker untuk fungsi Offline
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js');
+        }
+
+        // Pantau status Internet
+        function updateNetStatus() {
+            const status = document.getElementById('network-status');
+            status.innerHTML = navigator.onLine ? 
+                '<span class="status-dot online"></span> ONLINE' : 
+                '<span class="status-dot offline"></span> OFFLINE MODE';
+        }
+        window.addEventListener('online', updateNetStatus);
+        window.addEventListener('offline', updateNetStatus);
+        updateNetStatus();
+    </script>
+</body>
+</html>
